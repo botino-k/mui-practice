@@ -1,11 +1,12 @@
-import { useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
+import { Outlet } from "react-router-dom";
 
 function App() {
 
   return (
-    <div className="App">
+    <div style={{display: "flex"}}>
       <Navbar />
+      <Outlet />
     </div>
   )
 }
