@@ -27,6 +27,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./mui
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -36,10 +39,8 @@ jobs:
           node-version: 18
           cache: 'npm'
       - name: Install dependencies
-        working-directory: mui
         run: npm install
       - name: Build
-        working-directory: mui
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
@@ -47,7 +48,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload dist repository
-          path: './mui/dist'
+          path: './dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
