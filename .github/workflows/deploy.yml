@@ -7,7 +7,11 @@ on:
     branches: ['main']
 
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+defaults:
+  run:
+    working-directory: ./mui
+
+workflow_dispatch:
 
 # Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
 permissions:
@@ -27,9 +31,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./mui
     steps:
       - name: Checkout
         uses: actions/checkout@v3
